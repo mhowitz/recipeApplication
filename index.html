@@ -22,20 +22,24 @@
             </div>
           </nav>
     </header>
-<div class="containter">
-
+<div class="containter section">
     <div class="row">
 
-        <div class="apiContainer col s12 m8" id = "searchDiv">
-            <div class="col">
-                <div class="col s6 m4">
-                <input type="text" placeholder="Search Recipes..">
-                <button type="button" class="button">Clear All</button> 
-                </div>
+        <div class="col s12 m8" id = "searchDiv">
+            <div class="row">
+                <div class="col s8">
+                <input name = "recipe name" type="text" placeholder="Search Recipes.." class = "validate" id = "recipeInput">
             </div>
-        
-        
-        
+                <div class="col">
+                    <button type="submit" class="btn-large" id="searchBtn">Search</button> 
+                </div>
+           
+            
+            </div>   
+            <div class="row" id="searchResults">
+                <h4 class="center">Results</h4>
+            </div>
+
      </div>
     
             <div class="col s12 m4">
