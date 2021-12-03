@@ -1,14 +1,71 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Document</title>
 </head>
 <body>
-     <!-- (NOT SURE HOW TO USE THIS?) <script src = "https://api.kroger.com/v1/connect/oauth2/authorize?scope=product.compact&response_type=code&client_id=recipesearchapp-8c839beb3d4b9472a15caa209e06ecb34253613186576661838"></script> -->
+    <!--Header and nav bar-->
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">FoodFinder</a>
+              <ul id="nav-mobile" class="right hide-on-small-and-down">
+                <li><a href="secondary.html">Nearest Grocery</a></li>
+                <li><a href="badges.html">Food Inspo</a></li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+<div class="containter section">
+    <div class="row">
+
+        <div class="col s12 m8" id = "searchDiv">
+            <div class="row">
+                <div class="col s8">
+                <input name = "recipe name" type="text" placeholder="Search Recipes.." class = "validate" id = "recipeInput">
+            </div>
+                <div class="col">
+                    <button type="submit" class="btn-large" id="searchBtn">Search</button> 
+                </div>
+           
+            
+            </div>   
+            <div class="row" id="searchResults">
+                <h4 class="center">Results</h4>
+            </div>
+
+     </div>
+    
+            <div class="col s12 m4">
+                <div class="row">
+                    <div class="card-panel ">
+                      <span class="card-title">Need to Make</span>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="card-panel">
+                      <span class="card-title">Favorites</span>
+                    </div>
+    
+                </div>
+            </div>
+    
+
+    </div>
+
+</div>
+
+
+
+
+    
     <script src="assets/js/script.js"></script>
-</body>git 
+</body>
 </html>
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--Header and nav bar-->
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="index.html" class="brand-logo">FoodFinder</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">Nearest Grocery</a></li>
+                <li><a href="badges.html">Food Inspo</a></li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+    <!-- Find a Grocery store section -->
+    <div class="row left">
+      <div class="col s8 m6">
+        <h4>Find a grocery store near you!</h4>
+        <div id="zipCode" class="modal">
+          <button data-target="zipCode" class="btn modal-trigger">Enter Zipcode</button>
+          <div id="modalContent"></div>
+        </div>
+
+        <div id="map"></div>
+
+      </div>
+    </div>
+
+    <!-- Ingredients list section -->
+  <div class="container">
+    <div class="row right">
+      <div class="col s4 m4">
+        <div id="groceryList" class="card">
+          <div class="card-content">
+          <span class="card-title">Grocery List</span>
+          <ul id="ingredients"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
