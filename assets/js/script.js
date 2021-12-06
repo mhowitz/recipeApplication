@@ -66,38 +66,58 @@ var generateRecipeSearch= function(recipeInput) {
     for(var i = 0; i < recipes.length; i++) {
 
         //create div that contains each card so that they are in columns! (materialize used this in their documentation)
-        var recipeDiv = $("<div>").addClass("col s12 m6 l4");
+        var recipeDiv = $("<div>").addClass("col s12 m6 l3");
         //created a card for each recipe with materialize class: card
         var recipeCard = $("<div>").addClass("card");
 
         //ADDING IMAGE TO CARDS
-        var recipeImgDiv = $("<div>").addClass("card-image");
+        var recipeImgDiv = $("<div>").addClass("card-image waves-effect waves-block waves-light");
         var imgUrlPath = recipes[i].recipe.images;
         var imgUrl = imgUrlPath.SMALL.url;
-        var recipeImg = $("<img src= " +imgUrl + " alt='recipe image'>");
+        var recipeImg = $("<img  clas = 'activator' src= " +imgUrl + " alt='recipe image'>");
 
         //materialize css: uses different divs for stacking the content in cards
-        var cardStacked = $("<div>").addClass("card-stacked");
-        var cardContent = $("<div>").addClass("card-content");
+        var cardContent = $("<div id='cardStacked'>").addClass("card-content");
 
         //create title for each card for recipe name
-        var recipeTitle= $("<span>").addClass("card-title center").text(recipes[i].recipe.label);
+        var recipeTitle= $("<span>").addClass("card-title activator grey-text text-darken-4").text(recipes[i].recipe.label);
         //created a div for link to recipe
-        var cardAction = $("<div>").addClass("card-action center");
+        var cardAction = $("<div>").addClass("card-reveal center");
+
+
 
         //this allows user to click on card to visit the recipe's website
         var recipeUrl = recipes[i].recipe.url;
         var recipeLink = $("<a href=" +recipeUrl+" > Click to View Recipe </a>")
         
 
+        var cardSpan = $("<span>").addClass("card-title grey-text text-darken-4").text(recipes[i].recipe.label);
+       
+        
+
+        var ingredientLines = recipes[i].recipe.ingredientLines;
+        var ingredientList = $("<ul id = 'recipeIngredients'>");
+    
+
+        
+        $(ingredientList, ingredientLines).each(function(i) {
+            for(var i = 0; i <ingredientLines.length;  i++) {
+                $(ingredientList).append(`<li> ${ingredientLines[i]}</li>`);
+            };
+            
+            console.log(ingredientLines)
+        })
+
+
+
         //appending to dom
         $("#searchResults").append(recipeDiv);
         recipeDiv.append(recipeCard);
         
-        recipeCard.append(recipeImgDiv, cardStacked);
-        cardStacked.append(cardContent, cardAction);
-        cardContent.append(recipeTitle);
-        cardAction.append(recipeLink);
+        recipeCard.append(recipeImgDiv, cardContent, cardAction);
+        cardContent.append(recipeTitle, recipeLink);
+        cardAction.append(cardSpan, ingredientList);
+        // ingredientList.append(ingredientLines);
         recipeImgDiv.append(recipeImg);
     }
 
