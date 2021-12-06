@@ -68,7 +68,7 @@ var generateRecipeSearch= function(recipeInput) {
         //create div that contains each card so that they are in columns! (materialize used this in their documentation)
         var recipeDiv = $("<div>").addClass("col s12 m6 l3");
         //created a card for each recipe with materialize class: card
-        var recipeCard = $("<div>").addClass("card");
+        var recipeCard = $("<div>").addClass("card small");
 
         //ADDING IMAGE TO CARDS
         var recipeImgDiv = $("<div>").addClass("card-image waves-effect waves-block waves-light");
@@ -80,15 +80,15 @@ var generateRecipeSearch= function(recipeInput) {
         var cardContent = $("<div id='cardStacked'>").addClass("card-content");
 
         //create title for each card for recipe name
-        var recipeTitle= $("<span>").addClass("card-title activator grey-text text-darken-4").text(recipes[i].recipe.label);
+        var recipeTitle= $("<span>").addClass("card-title center activator grey-text text-darken-4").text(recipes[i].recipe.label);
         //created a div for link to recipe
-        var cardAction = $("<div>").addClass("card-reveal center");
+        var cardAction = $("<div>").addClass("card-reveal hoverable center");
 
 
 
         //this allows user to click on card to visit the recipe's website
         var recipeUrl = recipes[i].recipe.url;
-        var recipeLink = $("<a href=" +recipeUrl+" > Click to View Recipe </a>")
+        var recipeLink = $("<a href=" +recipeUrl+" > Click to Visit Website </a>")
         
 
         var cardSpan = $("<span>").addClass("card-title grey-text text-darken-4").text(recipes[i].recipe.label);
@@ -108,15 +108,15 @@ var generateRecipeSearch= function(recipeInput) {
             console.log(ingredientLines)
         })
 
-
+        
 
         //appending to dom
         $("#searchResults").append(recipeDiv);
         recipeDiv.append(recipeCard);
         
         recipeCard.append(recipeImgDiv, cardContent, cardAction);
-        cardContent.append(recipeTitle, recipeLink);
-        cardAction.append(cardSpan, ingredientList);
+        cardContent.append(recipeTitle);
+        cardAction.append(cardSpan, ingredientList, recipeLink);
         // ingredientList.append(ingredientLines);
         recipeImgDiv.append(recipeImg);
     }
