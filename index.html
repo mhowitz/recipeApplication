@@ -31,7 +31,7 @@
                 <input name = "recipe name" type="text" placeholder="Search Recipes.." class = "validate" id = "recipeInput">
             </div>
                 <div class="col">
-                    <button type="submit" class="btn-large" id="searchBtn">Search</button> 
+                    <button type="submit" class="btn-large modal-trigger" id="searchBtn" href="#modal_box">Search</button> 
                 </div>
            
             
@@ -61,11 +61,19 @@
 
 </div>
 
-
+<div id = "modal_box" class="modal">
+    <div class="modal-content">
+        <h4>Please Enter a valid search Criteria</h4>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class = "modal-action modal-close waves-effect waves-red btn">OK</a>
+    </div>
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
