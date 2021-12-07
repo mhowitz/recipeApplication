@@ -94,32 +94,59 @@ var generateRecipeSearch= function(recipeInput) {
         var cardSpan = $("<span>").addClass("card-title grey-text text-darken-4").text(recipes[i].recipe.label);
        
         
-
+        //adding recipe to each card 
         var ingredientLines = recipes[i].recipe.ingredientLines;
         var ingredientList = $("<ul id = 'recipeIngredients'>");
     
 
-        
+        //loop through array of ingredients to add to card
         $(ingredientList, ingredientLines).each(function(i) {
             for(var i = 0; i <ingredientLines.length;  i++) {
                 $(ingredientList).append(`<li> ${ingredientLines[i]}</li>`);
             };
             
             console.log(ingredientLines)
-        })
+        });
 
-        
-
+        var groceryButton = $(`<a id="addGrocery"><i class="material-icons left">add_circle_outline</i>Groceries</a>`).addClass("waves-effect waves-light btn");
+        groceryButton.click(recipes[i], generateGroceryList);
         //appending to dom
         $("#searchResults").append(recipeDiv);
         recipeDiv.append(recipeCard);
         
         recipeCard.append(recipeImgDiv, cardContent, cardAction);
         cardContent.append(recipeTitle);
-        cardAction.append(cardSpan, ingredientList, recipeLink);
+        cardAction.append(cardSpan, ingredientList, recipeLink, groceryButton);
         // ingredientList.append(ingredientLines);
         recipeImgDiv.append(recipeImg);
     }
 
 };
 
+var groceryList = [];
+var generateGroceryList = function(recipe) {
+    var ingredients = recipe.data.recipe.ingredients;
+    $(ingredients).each(function(i) {
+        var ingredient = ingredients[i].food;
+        groceryList.push(ingredient);
+        localStorage.setItem("groceryList", groceryList);
+    })
+    console.log(groceryList);
+}
+
+
+
+//generate a grocery list
+// $("#searchResults").on("click", "a", function(event) {
+//     console.log($(this).parent().text() + "you have clicked grocery button")
+// })
+
+
+
+
+
+//create button to add ingredients to grocery list
+//add items to local storage and load from there to grocery list?
+
+
+//ingredients located: recipes.recipe.ingredients.[0].food might need a .each and .for loop similar to ingredientlist.each function
