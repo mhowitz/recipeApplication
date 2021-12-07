@@ -68,7 +68,7 @@ var generateRecipeSearch= function(recipeInput) {
         //create div that contains each card so that they are in columns! (materialize used this in their documentation)
         var recipeDiv = $("<div>").addClass("col s12 m6 l3");
         //created a card for each recipe with materialize class: card
-        var recipeCard = $("<div>").addClass("card small");
+        var recipeCard = $("<div id = 'recipeCard'>").addClass("card small");
 
         //ADDING IMAGE TO CARDS
         var recipeImgDiv = $("<div>").addClass("card-image waves-effect waves-block waves-light");
