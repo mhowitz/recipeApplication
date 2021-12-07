@@ -38,8 +38,10 @@ var generateRecipeSearch= function(recipeInput) {
     //create for loop to loop through every recipe that Edamam gives to us to append to DOM
     for(var i = 0; i < recipes.length; i++) {
 
+        //add each search result to list item
+        var recipeListItem = $("<li>").addClass("recipeItem");
         //create div that contains each card so that they are in columns! (materialize used this in their documentation)
-        var recipeDiv = $("<div>").addClass("col s12 m6 l4");
+        var recipeDiv = $("<div>").addClass("recipeEl col s12 m6 l4");
         //created a card for each recipe with materialize class: card
         var recipeCard = $("<div>").addClass("card");
 
@@ -63,9 +65,16 @@ var generateRecipeSearch= function(recipeInput) {
         var recipeLink = $("<a href=" +recipeUrl+" > Click to View Recipe </a>")
         
 
+    
+
         //appending to dom
-        $("#searchResults").append(recipeDiv);
+        $("#list-recipeResults").append(recipeListItem);
+        recipeListItem.append(recipeDiv);
         recipeDiv.append(recipeCard);
+
+
+        // // append recipeDiv to recipe-item
+        // $("#recipe-item").append(recipeDiv);
         
         recipeCard.append(recipeImgDiv, cardStacked);
         cardStacked.append(cardContent, cardAction);
@@ -77,11 +86,25 @@ var generateRecipeSearch= function(recipeInput) {
 
 
 
-//make recipes droppable to the "need to make" and "favorites" list
+//make recipes sortable to "want to make" and "favorites" lists
+$( function() {
+    $("#list-favorites, #list-wantToMake, #list-recipeResults").sortable({
+        connectWith: "list-group",   
+        scroll: false,
+        tolerance: "pointer",
+        helper: "clone",
+    });
+} );
 
-
-
-//add sortable capabilities to recipes in lists
+    $( function() {
+        $("#list-wantToMake, #list-favorites").droppable({
+            accept: ".recipeItem",
+            drop: function( event, ui) {
+                $(this)
+                .find(".card-panel");
+            }
+        });
+    });
 
 
 //TO DO IN FEATURE/RECIPESEARCH BRANCH:
