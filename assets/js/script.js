@@ -124,12 +124,18 @@ var generateRecipeSearch= function(recipeInput) {
 };
 
 var groceryList = [];
+
+
+
 var generateGroceryList = function(recipe) {
     var ingredients = recipe.data.recipe.ingredients;
+    
     $(ingredients).each(function(i) {
+        var recipeName = recipe.data.recipe.label;
         var ingredient = ingredients[i].food;
         groceryList.push(ingredient);
         localStorage.setItem("groceryList", groceryList);
+        
     })
     console.log(groceryList);
 }
