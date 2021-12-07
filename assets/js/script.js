@@ -75,6 +75,15 @@ var generateRecipeSearch= function(recipeInput) {
     }
 };
 
+
+
+//make recipes droppable to the "need to make" and "favorites" list
+
+
+
+//add sortable capabilities to recipes in lists
+
+
 //TO DO IN FEATURE/RECIPESEARCH BRANCH:
 //  NEED TO SET TO EMPTY STRING SO THAT WHEN BUTTON IS CLICKED, FEATURES GO AWAY INSTEAD OF STACKING ON TOP OF EACH OTEHR
 //  ADD ERROR HANDLING SO IF USER SEARCH IS NOT VALID, A MODAL APPEARS OR TEXT DISPLAYED ON SCREEN FOR USER TO TRY AGAIN (NO ALERTS/PROMPTS)
