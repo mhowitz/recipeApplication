@@ -94,39 +94,52 @@ var generateRecipeSearch= function(recipeInput) {
         var cardSpan = $("<span>").addClass("card-title grey-text text-darken-4").text(recipes[i].recipe.label);
        
         
-
+        //adding recipe to each card 
         var ingredientLines = recipes[i].recipe.ingredientLines;
         var ingredientList = $("<ul id = 'recipeIngredients'>");
     
 
-        
+        //loop through array of ingredients to add to card
         $(ingredientList, ingredientLines).each(function(i) {
             for(var i = 0; i <ingredientLines.length;  i++) {
                 $(ingredientList).append(`<li> ${ingredientLines[i]}</li>`);
             };
             
             console.log(ingredientLines)
-        })
+        });
 
-        
-
+        var groceryButton = $(`<a id="addGrocery"><i class="material-icons left">add_circle_outline</i>Groceries</a>`).addClass("waves-effect waves-light btn");
+        groceryButton.click(recipes[i], generateGroceryList);
         //appending to dom
         $("#searchResults").append(recipeDiv);
         recipeDiv.append(recipeCard);
         
         recipeCard.append(recipeImgDiv, cardContent, cardAction);
         cardContent.append(recipeTitle);
-        cardAction.append(cardSpan, ingredientList, recipeLink);
+        cardAction.append(cardSpan, ingredientList, recipeLink, groceryButton);
         // ingredientList.append(ingredientLines);
         recipeImgDiv.append(recipeImg);
     }
 
 };
 
-//I can drag a recipe into the Need to Make or Favorites cards and they save to local storage 
+var groceryList = [];
 
-//Create a button on each recipe so I can add the ingredients in that recipe to my grocery list that is saved into local storage
 
-//Local Storage: MVP: Save status of Need to Make / Favorite -> Ice box: save grocery list to local storage
+var generateGroceryList = function(recipe) {
+    var ingredients = recipe.data.recipe.ingredients;
+    
+    $(ingredients).each(function(i) {
+        var ingredient = ingredients[i].food;
+        groceryList.push(ingredient);
+        localStorage.setItem("groceryList", groceryList);
+        
+    })
+    // console.log(groceryList);
+}
 
-//Create Map API- with separate JS because it is on separate page
+
+
+//grocery list successfully in local storage and is loaded on secondary HTML
+//Need to remove duplicates if possible and remove items like 'water'???
+//Also, when navigating back from home page to secondary- removes items from local storage?
