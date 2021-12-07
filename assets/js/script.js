@@ -68,7 +68,7 @@ var generateRecipeSearch= function(recipeInput) {
         //create div that contains each card so that they are in columns! (materialize used this in their documentation)
         var recipeDiv = $("<div>").addClass("col s12 m6 l3");
         //created a card for each recipe with materialize class: card
-        var recipeCard = $("<div>").addClass("card small");
+        var recipeCard = $("<div id = 'recipeCard'>").addClass("card small");
 
         //ADDING IMAGE TO CARDS
         var recipeImgDiv = $("<div>").addClass("card-image waves-effect waves-block waves-light");
@@ -123,3 +123,10 @@ var generateRecipeSearch= function(recipeInput) {
 
 };
 
+//I can drag a recipe into the Need to Make or Favorites cards and they save to local storage 
+
+//Create a button on each recipe so I can add the ingredients in that recipe to my grocery list that is saved into local storage
+
+//Local Storage: MVP: Save status of Need to Make / Favorite -> Ice box: save grocery list to local storage
+
+//Create Map API- with separate JS because it is on separate page
