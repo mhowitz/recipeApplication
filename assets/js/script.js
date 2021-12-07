@@ -126,33 +126,20 @@ var generateRecipeSearch= function(recipeInput) {
 var groceryList = [];
 
 
-
 var generateGroceryList = function(recipe) {
     var ingredients = recipe.data.recipe.ingredients;
     
     $(ingredients).each(function(i) {
-        var recipeName = recipe.data.recipe.label;
         var ingredient = ingredients[i].food;
         groceryList.push(ingredient);
         localStorage.setItem("groceryList", groceryList);
         
     })
-    console.log(groceryList);
+    // console.log(groceryList);
 }
 
 
 
-//generate a grocery list
-// $("#searchResults").on("click", "a", function(event) {
-//     console.log($(this).parent().text() + "you have clicked grocery button")
-// })
-
-
-
-
-
-//create button to add ingredients to grocery list
-//add items to local storage and load from there to grocery list?
-
-
-//ingredients located: recipes.recipe.ingredients.[0].food might need a .each and .for loop similar to ingredientlist.each function
+//grocery list successfully in local storage and is loaded on secondary HTML
+//Need to remove duplicates if possible and remove items like 'water'???
+//Also, when navigating back from home page to secondary- removes items from local storage?
