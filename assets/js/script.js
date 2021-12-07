@@ -8,23 +8,33 @@ var getRecipes = function(foodItem) {
                 generateRecipeSearch(data);
             }
             )} else {
-                console.log("data not found")
+                var unsuccessfulRequest = $('<h3>').addClass("center");
+                unsuccessfulRequest.text("Error: No Recipees Found!");
+                $("#searchResults").append(unsuccessfulRequest);
             }
+    })
+    .catch(function(error) {
+        var networkError = $('<h3>').addClass("center");
+        networkError.text("Unable to connect to server. Try refreshing, or revisiting the page soon.");
+        $("#searchResults").append(networkError);
     })
 };
 //testing:
 //getRecipes("chicken");
 
-$("#searchBtn").click(function() {
+
+$("#searchBtn").click(function(event) {
+    event.preventDefault();
     //Assign a variable to the text input in DOM
     var recipeInput = $("#recipeInput").val();
     console.log(recipeInput);
     //checking if button is clicked
     console.log("button clicked");
+    //sets page to blank each time the search button is clicked;
+    $("#searchResults").text("");
     //error handling if set to empty string an err. will be logged- should eventually turn this into a modal or append text to screen
-    if(recipeInput === '') {
-        console.log("Pls Enter a valid reicpe"); //is return necessary here?
-        return;
+    if(recipeInput === ' ' || recipeInput === '') {
+       $('.modal').modal();
     } else {
         //if the user entered in text, getRecipes() will run with whatever text was inserted into #recipeInput
         getRecipes(recipeInput);
@@ -33,49 +43,83 @@ $("#searchBtn").click(function() {
 });
 
 var generateRecipeSearch= function(recipeInput) {
+    
+  
+
+    //sets text input to empty string so user does not have to delete every time
+    $("#recipeInput").val("");
+
     //assigning new variable bc Edamam displays an array of 20 recipes into a hits value
     var recipes = recipeInput.hits;
+
+    //If there are no recipes found when search, this message is appended to screen
+    if(recipes.length===0) {
+        var recipeError = $("<h3>").addClass("center");
+        recipeError.text("No Results Found");
+        var inputInstructions = $('<p>').addClass("center");
+        inputInstructions.text("Try entering an ingredient or cuisine type. For example, you can search 'chicken', 'dinner', 'vegan', or 'gluten free'.")
+        $("#searchResults").append(recipeError, inputInstructions);
+        return;
+    }
+
     //create for loop to loop through every recipe that Edamam gives to us to append to DOM
     for(var i = 0; i < recipes.length; i++) {
 
         //create div that contains each card so that they are in columns! (materialize used this in their documentation)
-        var recipeDiv = $("<div>").addClass("col s12 m6 l4");
+        var recipeDiv = $("<div>").addClass("col s12 m6 l3");
         //created a card for each recipe with materialize class: card
-        var recipeCard = $("<div>").addClass("card");
+        var recipeCard = $("<div>").addClass("card small");
 
         //ADDING IMAGE TO CARDS
-        var recipeImgDiv = $("<div>").addClass("card-image");
+        var recipeImgDiv = $("<div>").addClass("card-image waves-effect waves-block waves-light");
         var imgUrlPath = recipes[i].recipe.images;
         var imgUrl = imgUrlPath.SMALL.url;
-        var recipeImg = $("<img src= " +imgUrl + " alt='recipe image'>");
+        var recipeImg = $("<img  clas = 'activator' src= " +imgUrl + " alt='recipe image'>");
 
         //materialize css: uses different divs for stacking the content in cards
-        var cardStacked = $("<div>").addClass("card-stacked");
-        var cardContent = $("<div>").addClass("card-content");
+        var cardContent = $("<div id='cardStacked'>").addClass("card-content");
 
         //create title for each card for recipe name
-        var recipeTitle= $("<span>").addClass("card-title center").text(recipes[i].recipe.label);
+        var recipeTitle= $("<span>").addClass("card-title center activator grey-text text-darken-4").text(recipes[i].recipe.label);
         //created a div for link to recipe
-        var cardAction = $("<div>").addClass("card-action center");
+        var cardAction = $("<div>").addClass("card-reveal hoverable center");
+
+
 
         //this allows user to click on card to visit the recipe's website
         var recipeUrl = recipes[i].recipe.url;
-        var recipeLink = $("<a href=" +recipeUrl+" > Click to View Recipe </a>")
+        var recipeLink = $("<a href=" +recipeUrl+" > Click to Visit Website </a>")
+        
+
+        var cardSpan = $("<span>").addClass("card-title grey-text text-darken-4").text(recipes[i].recipe.label);
+       
+        
+
+        var ingredientLines = recipes[i].recipe.ingredientLines;
+        var ingredientList = $("<ul id = 'recipeIngredients'>");
+    
+
+        
+        $(ingredientList, ingredientLines).each(function(i) {
+            for(var i = 0; i <ingredientLines.length;  i++) {
+                $(ingredientList).append(`<li> ${ingredientLines[i]}</li>`);
+            };
+            
+            console.log(ingredientLines)
+        })
+
         
 
         //appending to dom
         $("#searchResults").append(recipeDiv);
         recipeDiv.append(recipeCard);
         
-        recipeCard.append(recipeImgDiv, cardStacked);
-        cardStacked.append(cardContent, cardAction);
+        recipeCard.append(recipeImgDiv, cardContent, cardAction);
         cardContent.append(recipeTitle);
-        cardAction.append(recipeLink);
+        cardAction.append(cardSpan, ingredientList, recipeLink);
+        // ingredientList.append(ingredientLines);
         recipeImgDiv.append(recipeImg);
     }
+
 };
 
-//TO DO IN FEATURE/RECIPESEARCH BRANCH:
-//  NEED TO SET TO EMPTY STRING SO THAT WHEN BUTTON IS CLICKED, FEATURES GO AWAY INSTEAD OF STACKING ON TOP OF EACH OTEHR
-//  ADD ERROR HANDLING SO IF USER SEARCH IS NOT VALID, A MODAL APPEARS OR TEXT DISPLAYED ON SCREEN FOR USER TO TRY AGAIN (NO ALERTS/PROMPTS)
-//  ONCE THESE ARE DONE: WE CAN ADD DRAGGABLE FEATURES (TO TRY AND FAVORITES SECTION) AND LOCAL STORAGE
