@@ -1,5 +1,11 @@
 # recipeApplication
 
+##User Story
+As a foodie,
+I WANT to search for recipes by ingredient,
+I also WANT to ORGANIZE the recipes on a Kanban style board by ‘recipes to try’ and ‘favorites’,
+And to find the nearest grocery store on a map.
+
 
 ##Acceptance Criteria
 •	When I load the page,
