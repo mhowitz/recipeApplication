@@ -16,7 +16,13 @@ nav {
   border-color: black;
 }
 
+#addGrocery {
+  margin: 5px 0px;
+}
 
+#toMake {
+  margin: 5px 0px;
+}
 
 /* #cardStacked {
   padding: 0;

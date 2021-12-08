@@ -110,13 +110,18 @@ var generateRecipeSearch= function(recipeInput) {
 
         var groceryButton = $(`<a id="addGrocery"><i class="material-icons left">add_circle_outline</i>Groceries</a>`).addClass("waves-effect waves-light btn");
         groceryButton.click(recipes[i], generateGroceryList);
+
+        //button to save recipes to the "need to make" list
+        var toMakeButton = $('<a id="toMake"><i class="medium material-icons left">local_dining</i>Need To Make</a>').addClass("waves-effect waves-teal btn-flat");
+        // $("#toMake").style.marginTop= "10px";
+
         //appending to dom
         $("#searchResults").append(recipeDiv);
         recipeDiv.append(recipeCard);
         
         recipeCard.append(recipeImgDiv, cardContent, cardAction);
         cardContent.append(recipeTitle);
-        cardAction.append(cardSpan, ingredientList, recipeLink, groceryButton);
+        cardAction.append(cardSpan, ingredientList, recipeLink, groceryButton, toMakeButton);
         // ingredientList.append(ingredientLines);
         recipeImgDiv.append(recipeImg);
     }
