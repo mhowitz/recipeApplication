@@ -1,12 +1,12 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
-nav {
-  padding: 5px 15px;
+#body {
+  color: #F6ECE2;
 }
-
 
 .apiContainer {
   margin-left: -100px;
@@ -16,7 +16,38 @@ nav {
   border-color: black;
 }
 
+head title {
+  font-size: 75px;
+}
 
+#navBar {
+  padding: 5px 15px;
+  background-color: #90A52F;
+  color: #F6ECE2;
+  
+}
+
+nav ul li {
+  font-size: 50px;
+  text-decoration: underline;
+}
+
+#searchBtn {
+  background-color: #FE8932;
+}
+
+#toMake {
+  background-color: #D2C6BA;
+}
+
+#favorites {
+  background-color: #D2C6BA;
+}
+
+
+.card-title {
+  font-weight: bol;
+}
 
 /* #cardStacked {
   padding: 0;
