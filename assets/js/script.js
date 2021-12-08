@@ -143,3 +143,4 @@ var generateGroceryList = function(recipe) {
 //grocery list successfully in local storage and is loaded on secondary HTML
 //Need to remove duplicates if possible and remove items like 'water'???
 //Also, when navigating back from home page to secondary- removes items from local storage?
+
