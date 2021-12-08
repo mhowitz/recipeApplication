@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Document</title>
+    <title>FoodFinder</title>
 </head>
 <body>
     <!--Header and nav bar-->
@@ -31,7 +31,7 @@
                 <input name = "recipe name" type="text" placeholder="Search Recipes.." class = "validate" id = "recipeInput">
             </div>
                 <div class="col">
-                    <button type="submit" class="btn-large" id="searchBtn">Search</button> 
+                    <button type="submit" class="btn-large modal-trigger" id="searchBtn" href="#modal_box">Search</button> 
                 </div>
            
             
@@ -44,12 +44,12 @@
     
             <div class="col s12 m3">
                 <div class="row">
-                    <div class="card-panel ">
+                    <div id = "toMake" class="card-panel ">
                       <span class="card-title">Need to Make</span>
                   </div>
                 </div>
                 <div class="row">
-                    <div class="card-panel">
+                    <div id= "favorites" class="card-panel">
                       <span class="card-title">Favorites</span>
                     </div>
     
@@ -61,11 +61,19 @@
 
 </div>
 
-
+<div id = "modal_box" class="modal">
+    <div class="modal-content">
+        <h4>Please Enter a valid search Criteria</h4>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class = "modal-action modal-close waves-effect waves-red btn">OK</a>
+    </div>
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
