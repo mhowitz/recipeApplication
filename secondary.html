@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Document</title>
@@ -32,14 +33,17 @@
           <div id="modalContent"></div>
         </div>
 
-        <!-- Map section-->
-        <div class="container"> 
-        <iframe 
-        src="https://api.mapbox.com/styles/v1/chelseao86/ckwv8wnqv0vww15oe26f2wa7c/draft.html?title=view&access_token=pk.eyJ1IjoiY2hlbHNlYW84NiIsImEiOiJja3d2OGlpN3EwM2Y1MnZzZXJ6NGhubmkyIn0.3AK1uWnQqg3Mq8Y2JJE0HQ&zoomwheel=true&fresh=true#12/48.8665/2.3176" 
-          title="Basic" 
-          style="border:none;"
-        ></iframe>
-    </div>
+<!-- Map section-->
+        <!-- Get location-->
+        <button onclick="getLocation()">Find a grocery store near you!</button>
+        <p id="location"></p>
+     
+      <!-- Show map -->
+        <div id='map' style='width: 400px; height: 300px;'></div>
+       
+
+
+
 
     <!-- Ingredients list section -->
   <div class="container">
@@ -57,7 +61,7 @@
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="assets/js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>  
+<script src="assets/js/map.js"></script>
 </body>
 </html>
