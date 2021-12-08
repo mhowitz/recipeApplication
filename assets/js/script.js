@@ -39,11 +39,11 @@ var generateRecipeSearch= function(recipeInput) {
     for(var i = 0; i < recipes.length; i++) {
 
         //add each search result to list item
-        var recipeListItem = $("<li>").addClass("recipeItem");
+        var recipeListItem = $("<li id= 'recipeItem'>").addClass("list-group");
         //create div that contains each card so that they are in columns! (materialize used this in their documentation)
-        var recipeDiv = $("<div>").addClass("recipeEl col s12 m6 l4");
+        var recipeDiv = $("<div>").addClass(" col s12 m6 l4");
         //created a card for each recipe with materialize class: card
-        var recipeCard = $("<div>").addClass("card");
+        var recipeCard = $("<div>").addClass("card recipeEl");
 
         //ADDING IMAGE TO CARDS
         var recipeImgDiv = $("<div>").addClass("card-image");
@@ -84,17 +84,22 @@ var generateRecipeSearch= function(recipeInput) {
     }
 };
 
+$(".list-group").draggable(
 
+);
 
 //make recipes sortable to "want to make" and "favorites" lists
-$( function() {
-    $("#list-favorites, #list-wantToMake, #list-recipeResults").sortable({
-        connectWith: "list-group",   
-        scroll: false,
-        tolerance: "pointer",
-        helper: "clone",
-    });
-} );
+// $( function() {
+//     $(".card .recipeItem").draggable({
+//         // connectWith: $(".card, .recipeEl"),   
+//         // scroll: false,
+//         // tolerance: "pointer",
+//         // helper: "clone",
+//         // activate: function(event, ui) {
+//         //     $(this).addClass("ui-draggable");
+//         // }
+//     });
+// } );
 
     $( function() {
         $("#list-wantToMake, #list-favorites").droppable({
