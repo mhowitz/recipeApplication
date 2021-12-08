@@ -16,7 +16,6 @@
   border-color: black;
 }
 
-<<<<<<< HEAD
 head title {
   font-size: 75px;
 }
@@ -48,16 +47,13 @@ nav ul li {
 
 .card-title {
   font-weight: bol;
-=======
+  
 #addGrocery {
   margin: 5px 0px;
 }
 
 #toMake {
   margin: 5px 0px;
->>>>>>> develop
 }
 
-/* #cardStacked {
-  padding: 0;
-} */
+
