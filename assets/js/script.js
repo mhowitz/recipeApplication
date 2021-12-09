@@ -80,7 +80,7 @@ var generateRecipeSearch= function(recipeInput) {
         var cardContent = $("<div id='cardStacked'>").addClass("card-content");
 
         //create title for each card for recipe name
-        var recipeTitle= $("<span>").addClass("card-title center activator grey-text text-darken-4").text(recipes[i].recipe.label);
+        var recipeTitle= $(`<span><i class="material-icons right">more_vert</i>${recipes[i].recipe.label}</span>`).addClass("card-title center activator grey-text text-darken-4")//.text(recipes[i].recipe.label);
         //created a div for link to recipe
         var cardAction = $("<div>").addClass("card-reveal hoverable center");
 
@@ -91,7 +91,7 @@ var generateRecipeSearch= function(recipeInput) {
         var recipeLink = $("<a href=" +recipeUrl+" > Click to Visit Website </a>")
         
 
-        var cardSpan = $("<span>").addClass("card-title grey-text text-darken-4").text(recipes[i].recipe.label);
+        var cardSpan = $(`<span><i class="material-icons right">close</i>${recipes[i].recipe.label}</span>`).addClass("card-title grey-text text-darken-4")//.text(recipes[i].recipe.label);
        
         
         //adding recipe to each card 
@@ -174,3 +174,4 @@ var addRecipeToList = function(recipe) {
 //grocery list successfully in local storage and is loaded on secondary HTML
 //Need to remove duplicates if possible and remove items like 'water'???
 //Also, when navigating back from home page to secondary- removes items from local storage?
+
