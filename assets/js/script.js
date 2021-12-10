@@ -157,6 +157,7 @@ var addRecipeToList = function(recipe) {
     var labelContent = $("<div>").addClass("card-content");
     var labelTitle = $("<span>").addClass("card-title").text(recipeLabel);
     var favoritesButton = $('<a id="favoriteButton" class="btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">favorite</i></a>');
+    
 
     //append recipe label elements to dom
     $("#toMakeList").append(labelCard);
