@@ -1,19 +1,7 @@
 * {
-  margin: 0;
+  margin: auto;
   padding: 0;
   font-family: 'Open Sans Condensed', sans-serif;
-}
-
-#body {
-  color: #F6ECE2;
-}
-
-.apiContainer {
-  margin-left: -100px;
-  margin-right: 100px;
-  margin-top: 10px;
-  justify-content: left;
-  border-color: black;
 }
 
 head title {
@@ -28,8 +16,17 @@ head title {
 }
 
 nav ul li {
-  font-size: 50px;
+  font-size: 75px;
   text-decoration: underline;
+  font-weight: bold;
+}
+
+.apiContainer {
+  margin-left: -100px;
+  margin-right: 100px;
+  margin-top: 10px;
+  justify-content: left;
+  border-color: black;
 }
 
 #searchBtn {
@@ -37,23 +34,37 @@ nav ul li {
 }
 
 #toMake {
-  background-color: #D2C6BA;
+  background-color: #D7E4EA;
+  color: black;
+  text-align: center;
+  /* margin: 5px 0px; */
 }
 
 #favorites {
-  background-color: #D2C6BA;
+  background-color: #D7E4EA;
+  color: black;
+  text-align: center;
+  margin: 5px 0px;
 }
 
+.ingredients {
+  background-color: #D7E4EA;
+  color: black;
+  text-align: center;
+}
 
 .card-title {
-  font-weight: bol;
-  
-#addGrocery {
-  margin: 5px 0px;
+  font-weight: bold;
 }
 
-#toMake {
-  margin: 5px 0px;
+.card-panel {
+  background-color: #D7E4EA;
+  color: black;
+  text-align: center;
 }
 
+.background-img {
+  margin: auto 15px auto 25px;
+  opacity: 50%;
+}
 
