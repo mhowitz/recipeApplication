@@ -104,8 +104,6 @@ var generateRecipeSearch= function(recipeInput) {
             for(var i = 0; i <ingredientLines.length;  i++) {
                 $(ingredientList).append(`<li> ${ingredientLines[i]}</li>`);
             };
-            
-            console.log(ingredientLines)
         });
 
         var groceryButton = $(`<a id="addGrocery"><i class="material-icons left">add_circle_outline</i>Groceries</a>`).addClass("waves-effect waves-light btn");
@@ -135,9 +133,17 @@ var generateGroceryList = function(recipe) {
     var ingredients = recipe.data.recipe.ingredients;
     var groceryList = JSON.parse(localStorage.getItem("groceryList")) || [];
     $(ingredients).each(function(i) {
-        var ingredient = ingredients[i].food;
-        groceryList.push(ingredient);
-        localStorage.setItem("groceryList", JSON.stringify(groceryList));
+        //set all ingredients to lowercase so that when checking if duplicates they will not include values like 'salt' and 'Salt'
+        var ingredient = ingredients[i].food.toLowerCase();
+        if(groceryList.includes(ingredient)|| ingredient==="water") {
+         //Does not push any item that already exists in groceryList array to local storage --> also does not put water in grocery list because common
+        } else{
+            //created new variable for ingreient with items that do not already exist in array of GroceryList
+            var newIngredient = ingredient;
+            groceryList.push(newIngredient);
+            localStorage.setItem("groceryList", JSON.stringify(groceryList));
+        }
+
         
     })
     // console.log(groceryList);
