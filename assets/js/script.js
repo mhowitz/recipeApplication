@@ -133,11 +133,11 @@ var groceryList = [];
 
 var generateGroceryList = function(recipe) {
     var ingredients = recipe.data.recipe.ingredients;
-    
+    var groceryList = JSON.parse(localStorage.getItem("groceryList")) || [];
     $(ingredients).each(function(i) {
         var ingredient = ingredients[i].food;
         groceryList.push(ingredient);
-        localStorage.setItem("groceryList", groceryList);
+        localStorage.setItem("groceryList", JSON.stringify(groceryList));
         
     })
     // console.log(groceryList);
