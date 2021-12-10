@@ -143,32 +143,49 @@ var generateGroceryList = function(recipe) {
     // console.log(groceryList);
 }
 
-//var needToMakeListEl = [];
+var needToMakeListEl = [];
 
 //add a recipe to the "Need to Make List"
 var addRecipeToList = function(recipe) {
     //get recipe lable from search data
     var recipeLabel = recipe.data.recipe.label;
-    // console.log(recipeLabel);
-    // needToMakeListEl.push(recipeLabel);
+    
 
     //create card for label and favorites button
-    var labelCard = $("<div>").addClass("card horizontal");
+    var labelCard = $('<div id="labelCard">').addClass("card horizontal");
     //create content for card
     var labelContent = $("<div>").addClass("card-content");
     var labelTitle = $("<span>").addClass("card-title").text(recipeLabel);
-    var favoritesButton = $('<a class="btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">favorite</i></a>');
+    var favoritesButton = $('<a id="favoriteButton" class="btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">favorite</i></a>');
 
-    //append 
+    //append recipe label elements to dom
     $("#toMakeList").append(labelCard);
     labelCard.append(labelContent);
     labelContent.append(labelTitle, favoritesButton);
 
+
+
+    needToMakeListEl.push(labelCard);
+    localStorage.setItem("needToMakeList", needToMakeListEl);
+
+
     //click event listener to call favorites
-    // favoritesButton.click(labelCard, addFavorites);
+    favoritesButton.click(addFavorites);
 
 };
 
+var favoritesListEl = [];
+
+//add recipe label to the "favorites" list
+var addFavorites = function() {
+    var favoriteButtonRemove = $("#favoriteButton").remove();
+    // var favoritesCard = $(needToMakeListEl)
+    var favoritesCard = $("#labelCard").detach();
+    $("#favoritesList").append(favoritesCard);
+    favoritesListEl.push(favoritesCard);
+    localStorage.setItem("favoritesList", favoritesListEl);
+    console.log(favoritesListEl);
+};
 
 
 //grocery list successfully in local storage and is loaded on secondary HTML
