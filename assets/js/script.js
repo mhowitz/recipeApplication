@@ -156,7 +156,6 @@ var addRecipeToList = function(recipe) {
     //get recipe lable from search data
     var recipeLabel = recipe.data.recipe.label;
     
-
     //create card for label and favorites button
     var labelCard = $('<div id="labelCard">').addClass("card horizontal");
     //create content for card
@@ -184,14 +183,31 @@ var addRecipeToList = function(recipe) {
 
 };
 
-var removeRecipe = function(recipe) {
-    var toMakeIndex = $(this).closest("#labelCard").index();
-    // $(localStorage.removeItem("needToMakeList"));
+
+
+var removeRecipe = function() {
+    //find recipe name
+    var recipeName = $(this).siblings(".card-title").text();
 
     //remove recipe card
     var removeCard = $(this).closest("#labelCard").remove();
 
-}
+    var updatedToMakeList = [];
+
+    //compare removed recipe name with items in array
+    for (var i= 0; i < needToMakeListEl.length; i++) {
+        if (needToMakeListEl[i] !== recipeName) {
+            updatedToMakeList.push(needToMakeListEl[i]);
+            }
+        }
+
+        //reassign need to make array to updated array
+        needToMakeListEl = updatedToMakeList;
+        //append new list to local storage
+        localStorage.setItem("needToMakeList", JSON.stringify(updatedToMakeList));
+    };
+
+
 
 var favoritesListEl = [];
 
