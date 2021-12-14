@@ -68,3 +68,6 @@ nav ul li {
   opacity: 50%;
 }
 
+#modal_box .btn {
+  background-color: #FE8932;
+}
