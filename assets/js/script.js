@@ -104,16 +104,14 @@ var generateRecipeSearch= function(recipeInput) {
             for(var i = 0; i <ingredientLines.length;  i++) {
                 $(ingredientList).append(`<li> ${ingredientLines[i]}</li>`);
             };
-            
-            console.log(ingredientLines)
         });
 
         var groceryButton = $(`<a id="addGrocery"><i class="material-icons left">add_circle_outline</i>Groceries</a>`).addClass("waves-effect waves-light btn");
         groceryButton.click(recipes[i], generateGroceryList);
 
         //button to save recipes to the "need to make" list
-        var toMakeButton = $('<a id="toMake"><i class="medium material-icons left">local_dining</i>Need To Make</a>').addClass("waves-effect waves-teal btn-flat");
-        // $("#toMake").style.marginTop= "10px";
+        var toMakeButton = $('<a id="makeButton"><i class="medium material-icons left">local_dining</i>Need To Make</a>').addClass("waves-effect waves-teal btn-flat");
+        toMakeButton.click(recipes[i], addRecipeToList);
 
         //appending to dom
         $("#searchResults").append(recipeDiv);
@@ -133,16 +131,68 @@ var groceryList = [];
 
 var generateGroceryList = function(recipe) {
     var ingredients = recipe.data.recipe.ingredients;
-    
+    var groceryList = JSON.parse(localStorage.getItem("groceryList")) || [];
     $(ingredients).each(function(i) {
-        var ingredient = ingredients[i].food;
-        groceryList.push(ingredient);
-        localStorage.setItem("groceryList", groceryList);
+        //set all ingredients to lowercase so that when checking if duplicates they will not include values like 'salt' and 'Salt'
+        var ingredient = ingredients[i].food.toLowerCase();
+        if(groceryList.includes(ingredient)|| ingredient==="water") {
+         //Does not push any item that already exists in groceryList array to local storage --> also does not put water in grocery list because common
+        } else{
+            //created new variable for ingreient with items that do not already exist in array of GroceryList
+            var newIngredient = ingredient;
+            groceryList.push(newIngredient);
+            localStorage.setItem("groceryList", JSON.stringify(groceryList));
+        }
+
         
     })
     // console.log(groceryList);
 }
 
+var needToMakeListEl = [];
+
+//add a recipe to the "Need to Make List"
+var addRecipeToList = function(recipe) {
+    //get recipe lable from search data
+    var recipeLabel = recipe.data.recipe.label;
+    
+
+    //create card for label and favorites button
+    var labelCard = $('<div id="labelCard">').addClass("card horizontal");
+    //create content for card
+    var labelContent = $("<div>").addClass("card-content");
+    var labelTitle = $("<span>").addClass("card-title").text(recipeLabel);
+    var favoritesButton = $('<a id="favoriteButton" class="btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">favorite</i></a>');
+    
+
+    //append recipe label elements to dom
+    $("#toMakeList").append(labelCard);
+    labelCard.append(labelContent);
+    labelContent.append(labelTitle, favoritesButton);
+
+
+
+    needToMakeListEl.push(labelCard);
+    localStorage.setItem("needToMakeList", needToMakeListEl);
+
+
+    //click event listener to call favorites
+    favoritesButton.click(addFavorites);
+
+};
+
+var favoritesListEl = [];
+
+//add recipe label to the "favorites" list
+var addFavorites = function() {
+    var favoriteButtonRemove = $("#favoriteButton").remove();
+    // var favoritesCard = $(needToMakeListEl)
+    var favoritesCard = $("#labelCard").detach();
+    $("#favoritesList").append(favoritesCard);
+    favoritesListEl.push(favoritesCard);
+    localStorage.setItem("favoritesList", favoritesListEl);
+    console.log(favoritesListEl);
+};
 
 
 //grocery list successfully in local storage and is loaded on secondary HTML

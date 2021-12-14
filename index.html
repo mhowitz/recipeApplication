@@ -25,6 +25,7 @@
     </header>
 
 
+    <!-- is this a typo/ two classes? -->
 <div class="container section"> 
     <div class="row">
 
@@ -43,23 +44,26 @@
             <div class="row" id="searchResults" >
 
                 <div class="background-img">
-                    <img src="./assets/Images/background.jpg" alt="utensil outline">
+                    <img src="./assets/Images/background.jpg" class = "responsive-img" alt="utensil outline">
                 </div>
 
             </div>
 
      </div>
     
-<div class="col s12 m3">
-    <div class="row">
-        <div id = "toMake" class="card-panel ">
-            <span class="card-title">Need to Make</span>
-        </div>
-</div>
-<div class="row">
-    <div id= "favorites" class="card-panel">
-        <span class="card-title">Favorites</span>
-    </div>
+            <div class="col s12 m3">
+                <div class="row">
+                    <div id = "toMake" class="card-panel ">
+                      <span class="card-title">Need to Make</span>
+                      <div id="toMakeList"></div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div id= "favorites" class="card-panel">
+                      <span class="card-title">Favorites</span>
+                      <div id="favoritesList"></div>
+                    </div>
+
     
 </div>
 </div>
@@ -85,4 +89,3 @@
     <script src="assets/js/script.js"></script>
 </body>
 </html>
-
