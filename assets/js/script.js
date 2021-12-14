@@ -163,35 +163,62 @@ var addRecipeToList = function(recipe) {
     var labelContent = $("<div>").addClass("card-content");
     var labelTitle = $("<span>").addClass("card-title").text(recipeLabel);
     var favoritesButton = $('<a id="favoriteButton" class="btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">favorite</i></a>');
-    
+    var removeButton = $('<a id="trashButton" class= "btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">delete_forever</i></a>');
 
     //append recipe label elements to dom
     $("#toMakeList").append(labelCard);
     labelCard.append(labelContent);
-    labelContent.append(labelTitle, favoritesButton);
+    labelContent.append(labelTitle, favoritesButton, removeButton);
 
 
-
-    needToMakeListEl.push(labelCard);
-    localStorage.setItem("needToMakeList", needToMakeListEl);
-
+    //add recipe label to array and append to localStorage
+    needToMakeListEl.push(recipeLabel);
+    localStorage.setItem("needToMakeList", JSON.stringify(needToMakeListEl));
+    console.log(needToMakeListEl);
 
     //click event listener to call favorites
     favoritesButton.click(addFavorites);
 
+    //click event to call remove recipe
+    removeButton.click(removeRecipe);
+
 };
+
+var removeRecipe = function(recipe) {
+    var toMakeIndex = $(this).closest("#labelCard").index();
+    // $(localStorage.removeItem("needToMakeList"));
+
+    //remove recipe card
+    var removeCard = $(this).closest("#labelCard").remove();
+
+}
 
 var favoritesListEl = [];
 
 //add recipe label to the "favorites" list
 var addFavorites = function() {
-    var favoriteButtonRemove = $("#favoriteButton").remove();
-    // var favoritesCard = $(needToMakeListEl)
-    var favoritesCard = $("#labelCard").detach();
-    $("#favoritesList").append(favoritesCard);
-    favoritesListEl.push(favoritesCard);
-    localStorage.setItem("favoritesList", favoritesListEl);
+    //find recipe name
+    var recipeName = $(this).siblings(".card-title").text();
+    //remove card from "need to make" list
+    var removeCard = $(this).closest("#labelCard").remove();
+
+    //create new card for "favorites list"
+    var favoriteCard = $('<div id="favoriteCard">').addClass("card horizontal");
+    //create content for card
+    var labelContent = $("<div>").addClass("card-content");
+    var labelTitle = $("<span>").addClass("card-title").text(recipeName);
+    
+
+    //append elements to dom
+    $("#favoritesList").append(favoriteCard);
+    $(favoriteCard).append(labelContent);
+    $(labelContent).append(labelTitle);
+    
+    //add recipe label to array and append to localStorage
+    favoritesListEl.push(recipeName);
+    localStorage.setItem("favoritesList", JSON.stringify(favoritesListEl));
     console.log(favoritesListEl);
+
 };
 
 

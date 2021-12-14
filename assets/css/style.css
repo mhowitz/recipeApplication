@@ -65,6 +65,14 @@ nav ul li {
   margin: 5px 0px;
 }
 
+#favoriteButton {
+  margin-right: 5px;
+}
+
+#trashButton {
+  margin-left: 5px;
+}
+
 
 .card-panel {
   background-color: #D7E4EA;
