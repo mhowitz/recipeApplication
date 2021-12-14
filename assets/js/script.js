@@ -149,41 +149,44 @@ var generateGroceryList = function(recipe) {
     // console.log(groceryList);
 }
 
+
+
 var needToMakeListEl = [];
 
 //add a recipe to the "Need to Make List"
 var addRecipeToList = function(recipe) {
     //get recipe lable from search data
     var recipeLabel = recipe.data.recipe.label;
-    
+
     //create card for label and favorites button
     var labelCard = $('<div id="labelCard">').addClass("card horizontal");
     //create content for card
     var labelContent = $("<div>").addClass("card-content");
     var labelTitle = $("<span>").addClass("card-title").text(recipeLabel);
     var favoritesButton = $('<a id="favoriteButton" class="btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">favorite</i></a>');
-    var removeButton = $('<a id="trashButton" class= "btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">delete_forever</i></a>');
+    var trashButton = $('<a id="trashButton" class= "btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">delete_forever</i></a>');
 
     //append recipe label elements to dom
     $("#toMakeList").append(labelCard);
     labelCard.append(labelContent);
-    labelContent.append(labelTitle, favoritesButton, removeButton);
+    labelContent.append(labelTitle, favoritesButton, trashButton);
 
 
     //add recipe label to array and append to localStorage
     needToMakeListEl.push(recipeLabel);
     localStorage.setItem("needToMakeList", JSON.stringify(needToMakeListEl));
     console.log(needToMakeListEl);
-
+    
+   
     //click event listener to call favorites
-    favoritesButton.click(addFavorites);
+    $(favoritesButton).click(addFavorites);
 
     //click event to call remove recipe
-    removeButton.click(removeRecipe);
-
+    $(trashButton).click(removeRecipe);
 };
 
 
+var updatedToMakeList = [];
 
 var removeRecipe = function() {
     //find recipe name
@@ -192,21 +195,17 @@ var removeRecipe = function() {
     //remove recipe card
     var removeCard = $(this).closest("#labelCard").remove();
 
-    var updatedToMakeList = [];
-
     //compare removed recipe name with items in array
     for (var i= 0; i < needToMakeListEl.length; i++) {
         if (needToMakeListEl[i] !== recipeName) {
             updatedToMakeList.push(needToMakeListEl[i]);
             }
         }
-
-        //reassign need to make array to updated array
-        needToMakeListEl = updatedToMakeList;
-        //append new list to local storage
-        localStorage.setItem("needToMakeList", JSON.stringify(updatedToMakeList));
-    };
-
+    //reassign need to make array to updated array
+    needToMakeListEl = updatedToMakeList;
+    //append new list to local storage
+    localStorage.setItem("needToMakeList", JSON.stringify(updatedToMakeList));
+};
 
 
 var favoritesListEl = [];
@@ -214,9 +213,22 @@ var favoritesListEl = [];
 //add recipe label to the "favorites" list
 var addFavorites = function() {
     //find recipe name
-    var recipeName = $(this).siblings(".card-title").text();
-    //remove card from "need to make" list
+    var recipeName = $(this).siblings(".card-title").text(); 
+
+    //remove recipe card
     var removeCard = $(this).closest("#labelCard").remove();
+
+    //compare removed recipe name with items in array
+    for (var i= 0; i < needToMakeListEl.length; i++) {
+        if (needToMakeListEl[i] !== recipeName) {
+            updatedToMakeList.push(needToMakeListEl[i]);
+            }
+        }
+    //reassign need to make array to updated array
+    needToMakeListEl = updatedToMakeList;
+    //append new list to local storage
+    localStorage.setItem("needToMakeList", JSON.stringify(updatedToMakeList));
+
 
     //create new card for "favorites list"
     var favoriteCard = $('<div id="favoriteCard">').addClass("card horizontal");
@@ -235,9 +247,69 @@ var addFavorites = function() {
     localStorage.setItem("favoritesList", JSON.stringify(favoritesListEl));
     console.log(favoritesListEl);
 
+    
+
+
+};
+
+//load recipes when page is refreshed
+var loadToMakeList = function () {
+    var toMakeRecipes = localStorage.getItem("needToMakeList");
+    if (toMakeRecipes === null) {
+        return false;
+    }
+    toMakeRecipes = JSON.parse(toMakeRecipes);
+    //loop through array
+    for (var i = 0; i < toMakeRecipes.length; i++) {
+    
+    //create card for label and favorites button
+    var labelCard = $('<div id="labelCard">').addClass("card horizontal");
+    //create content for card
+    var labelContent = $("<div>").addClass("card-content");
+    var labelTitle = $("<span>").addClass("card-title").text(toMakeRecipes[i]);
+    var favoritesButton = $('<a id="favoriteButton" class="btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">favorite</i></a>');
+    var trashButton = $('<a id="trashButton" class= "btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">delete_forever</i></a>');
+
+    //append recipe label elements to dom
+    $("#toMakeList").append(labelCard);
+    labelCard.append(labelContent);
+    labelContent.append(labelTitle, favoritesButton, trashButton);
+
+    //click event listener to call favorites
+    $(favoritesButton).click(addFavorites);
+
+    //click event to call remove recipe
+    $(trashButton).click(removeRecipe);
+
+    }
+};
+
+//load favorites list when page is refreshed
+var loadFavoritesList = function () {
+    var favoriteRecipes = localStorage.getItem("favoritesList");
+    if (favoriteRecipes === null) {
+        return false;
+    }
+    favoriteRecipes = JSON.parse(favoriteRecipes);
+    //loop through array
+    for (var i = 0; i < favoriteRecipes.length; i++) {
+    //create card for "favorites list"
+    var favoriteCard = $('<div id="favoriteCard">').addClass("card horizontal");
+    //create content for card
+    var labelContent = $("<div>").addClass("card-content");
+    var labelTitle = $("<span>").addClass("card-title").text(favoriteRecipes[i]);
+    
+
+    //append elements to dom
+    $("#favoritesList").append(favoriteCard);
+    $(favoriteCard).append(labelContent);
+    $(labelContent).append(labelTitle);
+    }
 };
 
 
+loadToMakeList();
+loadFavoritesList();
 //grocery list successfully in local storage and is loaded on secondary HTML
 //Need to remove duplicates if possible and remove items like 'water'???
 //Also, when navigating back from home page to secondary- removes items from local storage?
