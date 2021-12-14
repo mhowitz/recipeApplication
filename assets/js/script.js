@@ -112,8 +112,8 @@ var generateRecipeSearch= function(recipeInput) {
         groceryButton.click(recipes[i], generateGroceryList);
 
         //button to save recipes to the "need to make" list
-        var toMakeButton = $('<a id="toMake"><i class="medium material-icons left">local_dining</i>Need To Make</a>').addClass("waves-effect waves-teal btn-flat");
-        // $("#toMake").style.marginTop= "10px";
+        var toMakeButton = $('<a id="makeButton"><i class="medium material-icons left">local_dining</i>Need To Make</a>').addClass("waves-effect waves-teal btn-flat");
+        toMakeButton.click(recipes[i], addRecipeToList);
 
         //appending to dom
         $("#searchResults").append(recipeDiv);
@@ -142,6 +142,32 @@ var generateGroceryList = function(recipe) {
     })
     // console.log(groceryList);
 }
+
+//var needToMakeListEl = [];
+
+//add a recipe to the "Need to Make List"
+var addRecipeToList = function(recipe) {
+    //get recipe lable from search data
+    var recipeLabel = recipe.data.recipe.label;
+    // console.log(recipeLabel);
+    // needToMakeListEl.push(recipeLabel);
+
+    //create card for label and favorites button
+    var labelCard = $("<div>").addClass("card horizontal");
+    //create content for card
+    var labelContent = $("<div>").addClass("card-content");
+    var labelTitle = $("<span>").addClass("card-title").text(recipeLabel);
+    var favoritesButton = $('<a class="btn-floating btn-medium waves-effect waves-light teal"><i class="material-icons">favorite</i></a>');
+
+    //append 
+    $("#toMakeList").append(labelCard);
+    labelCard.append(labelContent);
+    labelContent.append(labelTitle, favoritesButton);
+
+    //click event listener to call favorites
+    // favoritesButton.click(labelCard, addFavorites);
+
+};
 
 
 
