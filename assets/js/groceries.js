@@ -3,8 +3,13 @@
 var groceryList = [];
 
 if(localStorage.getItem("groceryList")) {
-    groceryList= JSON.parse(localStorage.getItem("groceryList"));
+    var groceryList= JSON.parse(localStorage.getItem("groceryList")) || [];
     for(var i = 0; i < groceryList.length; i++) {
-        $("#ingredients").append(`<li>${groceryList[i]}</li>`)
+        $("#ingredients").append(`<li class="groceryItems">${groceryList[i]}</li>`)
     }
 }
+
+$("#clearGrocery").click(function() {
+    $(".groceryItems").remove();
+    localStorage.removeItem("groceryList");
+})
