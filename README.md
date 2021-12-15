@@ -4,6 +4,13 @@
 
 Application for searching recipes, generating a grocery list, and finding nearest grocery store.
 
+Programs used: HTML, CSS, Javascript, Materialize CSS, Mapbox, Edamam
+
+Challenges- Navigating new frameworks and API documentation. Adding grocery items to Local Storage without erasing the previous selection. Creating a responsive map that generated markers for nearest grocery stores.
+
+Successes- Created and linked a grocery list consisting of ingredients from recipes saved and displayed on home page. Manipulated and utilized Materialize CSS with no previous experience with the framework.
+
+
 ## Acceptance Criteria
 WHEN I load the page,
 THEN I see a page that displays a search bar for recipes and two cards for “Need To Make” and “Favorites”.
