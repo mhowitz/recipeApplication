@@ -2,6 +2,7 @@
 
 ## Description
 
+Application for searching recipes, generating a grocery list, and finding nearest grocery store.
 
 ## Acceptance Criteria
 WHEN I load the page,
@@ -28,9 +29,12 @@ The GitHub group repository can be found at this URL:	https://github.com/mhowitz
 
 Click the github URL link to view the website. To view the code, click the link to the github repository. Download the repository to your computer and unzip the file. Open the index.html file to view the HTML code. Open the style.css file to view the style sheet. Open the script.js file to view the JavaScript code.
 
-## Credits 
 
+## Sources
 
+Edamam API
+Mapbox API
+Materialize CSS
 
 ## License
 MIT License
