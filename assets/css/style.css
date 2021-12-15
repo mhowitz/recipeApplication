@@ -12,7 +12,7 @@ head title {
   padding: 5px 15px;
   background-color: #90A52F;
   color: #F6ECE2;
-  
+
 }
 
 nav ul li {
@@ -56,6 +56,15 @@ nav ul li {
 .card-title {
   font-weight: bold;
 }
+
+#makeButton {
+  margin: 5px 0px;
+}
+
+#addGrocery {
+  margin: 5px 0px;
+}
+
 
 .card-panel {
   background-color: #D7E4EA;
