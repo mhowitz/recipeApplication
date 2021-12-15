@@ -33,11 +33,17 @@ $("#searchBtn").click(function(event) {
     //sets page to blank each time the search button is clicked;
     $("#searchResults").text("");
     //error handling if set to empty string an err. will be logged- should eventually turn this into a modal or append text to screen
-    if(recipeInput === ' ' || recipeInput === '') {
-       $('.modal').modal();
-    } else {
-        //if the user entered in text, getRecipes() will run with whatever text was inserted into #recipeInput
+    if(recipeInput) {
+        //$('#modal_box').instance.destroy();
         getRecipes(recipeInput);
+    } else {
+
+        //if the user entered in text, getRecipes() will run with whatever text was inserted into #recipeInput
+        $('#modal_box').modal({
+            dismissable: true,
+            onOpenEnd: function(modal, trigger){console.log('modal open')},
+            onCloseEnd: function(){console.log("modal closed")}
+        });
     }
 
 });

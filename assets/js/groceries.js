@@ -12,4 +12,6 @@ if(localStorage.getItem("groceryList")) {
 $("#clearGrocery").click(function() {
     $(".groceryItems").remove();
     localStorage.removeItem("groceryList");
-})
+});
+
+$()
