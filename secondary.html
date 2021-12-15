@@ -5,62 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'>    
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>FoodFinder- Find a Grocery Store</title>
+    <title>Document</title>
 </head>
 <body>
     <!--Header and nav bar-->
-    <header id="header">
-        <nav id="navBar">
-            <div class="nav-wrapper">
+    <header>
+        <nav>
+            <div class="nav-wrapper" id="nav-second">
               <a href="index.html" class="brand-logo">FoodFinder</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="#">Nearest Grocery</a></li>
-                <li><a href="https://www.medicalnewstoday.com/articles/nutrition-tips">Nutrition Tips</a></li>
+                <li><a href="badges.html">Food Inspo</a></li>
               </ul>
             </div>
           </nav>
     </header>
-
-    <div class="row center secondaryPage">
-
     <!-- Find a Grocery store section -->
-        <div class="col s12 m6 l7">
-          <h5>Find a grocery store near you!</h5>
-
-        <!-- might not need any of this depending on API data -->
-        <!-- <div id="zipCode" class="modal">
+    <div class="row center secondaryPage">
+      <div class="col s8 m6">
+        <h4>Find a grocery store near you!</h4>
+        <div id="zipCode" class="modal">
           <button data-target="zipCode" class="btn modal-trigger">Enter Zipcode</button>
           <div id="modalContent"></div>
-        </div> -->
-
-        <div id="mapApi">
-          <div id="mapBox">
-              <a href="https://placeholder.com"><img src="https://via.placeholder.com/400"></a>
-          </div>
         </div>
-      </div>
-    
-
-
+        <!-- Map section-->
+        <button id="locationBtn" class="btn" >Find a grocery store near you!</button>
+     
+      <!-- Show map -->
+        <div id='map' style='width: 400px; height: 300px;'></div>
     <!-- Ingredients list section -->
-      <div class="col s12 m6 l5">
+</div>
+
+      <div class="col s12 m6 ">
         <div id="groceryList" class="card ingredients">
           <div class="card-panel">
           <span class="card-title">Grocery List</span>
           <ul id="ingredients">
           </ul>
+          <div class="btn" id="clearGrocery">Clear Grocery List</div>
           </div>
-        </div>
       </div>
-
+      </div>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+  <script src="assets/js/map.js"></script>
   <script src="assets/js/script.js"></script>
   <script src= "assets/js/groceries.js"></script>
+
 </body>
 </html>
+<!-- onclick="getLocation()" -->

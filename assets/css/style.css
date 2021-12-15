@@ -12,8 +12,15 @@ head title {
   padding: 5px 15px;
   background-color: #90A52F;
   color: #F6ECE2;
-  
+
 }
+
+#nav-second {
+  padding: 5px 15px;
+  background-color: #90A52F;
+  color: #F6ECE2;
+}
+
 
 nav ul li {
   font-size: 75px;
@@ -30,6 +37,14 @@ nav ul li {
 }
 
 #searchBtn {
+  background-color: #FE8932;
+}
+
+#locationBtn {
+  background-color: #FE8932;
+}
+
+#clearGrocery {
   background-color: #FE8932;
 }
 
@@ -81,7 +96,10 @@ nav ul li {
 }
 
 .background-img {
-  margin: auto 15px auto 25px;
+  margin: 150px 15px auto 25px;
   opacity: 50%;
 }
 
+#modal_box .btn {
+  background-color: #FE8932;
+}
