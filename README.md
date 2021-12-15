@@ -29,7 +29,11 @@ The GitHub group repository can be found at this URL:	https://github.com/mhowitz
 
 Click the github URL link to view the website. To view the code, click the link to the github repository. Download the repository to your computer and unzip the file. Open the index.html file to view the HTML code. Open the style.css file to view the style sheet. Open the script.js file to view the JavaScript code.
 
+## Usage 
 
+![screenshot-of-page](assets/Images/screenshot_main.JPG)
+
+![screenshot-of-page](assets/Images/screenshot of secondary page.JPG)
 ## Sources
 
 Edamam API
