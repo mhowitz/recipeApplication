@@ -33,7 +33,7 @@ Click the github URL link to view the website. To view the code, click the link 
 
 ![screenshot-of-page](assets/Images/screenshot_main.JPG)
 
-![screenshot-of-page](assets/Images/screenshot of secondary page.JPG)
+![screenshot-of-page](assets/Images/secondary.JPG)
 ## Sources
 
 Edamam API
