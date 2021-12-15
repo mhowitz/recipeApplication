@@ -15,6 +15,13 @@ head title {
 
 }
 
+#nav-second {
+  padding: 5px 15px;
+  background-color: #90A52F;
+  color: #F6ECE2;
+}
+
+
 nav ul li {
   font-size: 75px;
   text-decoration: underline;
@@ -30,6 +37,14 @@ nav ul li {
 }
 
 #searchBtn {
+  background-color: #FE8932;
+}
+
+#locationBtn {
+  background-color: #FE8932;
+}
+
+#clearGrocery {
   background-color: #FE8932;
 }
 
@@ -63,6 +78,14 @@ nav ul li {
 
 #addGrocery {
   margin: 5px 0px;
+}
+
+#favoriteButton {
+  margin-right: 5px;
+}
+
+#trashButton {
+  margin-left: 5px;
 }
 
 
